@@ -3,7 +3,6 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
-
 module.exports = {
   devtool: false,
   entry: "./src/main.js",
@@ -15,8 +14,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|styl)$/,
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(css)$/,
+        use: ["style-loader", "css-loader"],
+        // exclude: /node_modules/,
+      },
+      {
+        test: /\.(styl)$/,
         use: ["style-loader", "css-loader", "stylus-loader"],
+        // exclude: /node_modules/,
       },
       {
         test: /\.js$/,
