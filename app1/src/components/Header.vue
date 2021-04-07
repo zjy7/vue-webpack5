@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>这是一个头部导航{{name}}</h1>
-        <h2>哈哈哈哈哈 成功了!!!!!</h2>
+        <h2>哈哈哈哈哈 {{appName}} 成功了!!!!!</h2>
     </div>
 </template>
 <script>
@@ -11,6 +11,15 @@ export default {
             type: String,
             default: ''
         }
+    },
+    computed:{
+      appName(){
+        return this.$store.state.msg
+      }
+    },
+    created(){
+      console.log(this.$store.state)
+      this.$store.commit('setMsg','app2')
     }
 }
 </script>
