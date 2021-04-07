@@ -18,7 +18,6 @@ export default {
       }
     },
     created(){
-      console.log(this.$store.state)
       this.$store.commit('setMsg','app2')
     }
 }

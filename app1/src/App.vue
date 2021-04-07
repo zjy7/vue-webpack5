@@ -1,12 +1,16 @@
 <template>
   <div id="app">
+    注：红框内是App1
+    <el-button type='primary'>App1 button</el-button>
     <div>这里是app1</div>
     <Header name="app1"/>
     <div>这里是app1</div>
+    注：红框内是App1
   </div>
 </template>
 <script>
 import Header from './components/Header.vue'
+
 export default {
   components: {
     Header
@@ -14,3 +18,8 @@ export default {
 }
 
 </script>
+<style scoped>
+#app{
+  border:1px solid red;
+}
+</style>
