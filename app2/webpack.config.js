@@ -4,6 +4,11 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 module.exports = {
+  resolve:{
+    alias:{
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   devtool: false,
   entry: "./src/main.js",
   mode: "development",
@@ -13,6 +18,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /.(png|jpe?g|gif|svg)$/,
+        use: [
+            {
+            loader: 'file-loader',
+            options: {
+              esModule:false
+            }
+          }
+        ]
+      },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         loader: 'file-loader',

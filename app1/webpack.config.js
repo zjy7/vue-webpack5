@@ -1,9 +1,15 @@
 const path = require("path");
+const resolve = dir => path.resolve(__dirname, dir);
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 module.exports = {
+  resolve:{
+    alias:{
+      '@': resolve('src')
+    }
+  },
   devtool: false,
   entry: "./src/main.js",
   mode: "development",
@@ -13,6 +19,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /.(png|jpe?g|gif|svg)$/,
+        use: [
+            {
+            loader: 'file-loader',
+            options: {
+              esModule:false
+            }
+          }
+        ]
+      },
       {
         test: /\.(css|styl)$/,
         use: ["style-loader", "css-loader", "stylus-loader"],
@@ -24,8 +41,10 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        loader: "vue-loader",
-      },
+        use: {
+          loader: "vue-loader"
+        },
+      }
     ],
   },
   plugins: [

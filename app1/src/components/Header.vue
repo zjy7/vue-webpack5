@@ -1,8 +1,9 @@
 <template>
-    <div>
-        <h1>这是一个头部导航{{name}}</h1>
-        <h2>哈哈哈哈哈 {{appName}} 成功了!!!!!</h2>
-    </div>
+  <div>
+    <h1>这是一个头部导航{{name}}</h1>
+    <h2>哈哈哈哈哈 {{appName}} 成功了!!!!!</h2>
+    <img src="~@/assets/dw.png" alt="">
+  </div>
 </template>
 <script>
 export default {
@@ -14,11 +15,11 @@ export default {
     },
     computed:{
       appName(){
-        return this.$store.state.msg
+        return this.$store? this.$store.state.msg:''
       }
     },
     created(){
-      this.$store.commit('setMsg','app2')
+      this.$store?this.$store.commit('setMsg','app2'):''
     }
 }
 </script>
