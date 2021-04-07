@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>这里是app222222</div>
-    <Header name="app2"/>
+    <App1 name="app2"/>
     <div>这里是app222222</div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 
 export default {
   components: {
-    Header: () => import('app1/App')
+    App1: () => import('app1/App')
   }
 }
 
