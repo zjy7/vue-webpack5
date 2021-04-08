@@ -18,6 +18,15 @@ export default {
     clickBtn(){
       this.$message.success('111')
     }
+  },
+  beforeCreate(){
+    console.log('remote before create...')
+  },
+  created(){
+    console.log('remote created...')
+  },
+  mounted(){
+    console.log('remote mounted...')
   }
 }
 
